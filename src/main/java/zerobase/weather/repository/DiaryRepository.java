@@ -8,8 +8,14 @@ import zerobase.weather.domain.Diary;
 
 @Repository
 public interface DiaryRepository extends JpaRepository<Diary, Integer> {
+
+    // 날짜별 조회
     List<Diary> findAllByDate(LocalDate date);
 
+    // 기간별 조회
     List<Diary> findAllByDateBetween(LocalDate startDate, LocalDate endDate);
+
+    // 수정을 위한 함수
+    Diary getFirstByDate(LocalDate date);
 
 }

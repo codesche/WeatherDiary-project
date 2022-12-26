@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,5 +40,11 @@ public class DiaryController {
         return diaryService.readDiaries(startDate, endDate);
     }
 
+    // 날씨 일기 수정
+    @PutMapping("/update/diary")
+    void updateDiary(@RequestParam @DateTimeFormat(iso = ISO.DATE) LocalDate date,
+        @RequestBody String text) {
+        diaryService.updateDiary(date, text);
+    }
 
 }
