@@ -1,5 +1,6 @@
 package zerobase.weather.service;
 
+import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -47,6 +48,14 @@ public class DiaryService {
 
         // DB에 저장
         diaryRepository.save(nowDiary);
+    }
+
+    public List<Diary> readDiary(LocalDate date) {
+        return diaryRepository.findAllByDate(date);
+    }
+
+    public List<Diary> readDiaries(LocalDate startDate, LocalDate endDate) {
+        return diaryRepository.findAllByDateBetween(startDate, endDate);
     }
 
     // OpenWeatherMap에서 데이터 받아오기
@@ -107,4 +116,7 @@ public class DiaryService {
         resultMap.put("icon", weatherData.get("icon"));                             // weather.icon
         return resultMap;
     }
+
+
+
 }
