@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import zerobase.weather.domain.Diary;
 
 @Repository
@@ -17,5 +18,9 @@ public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 
     // 수정을 위한 함수
     Diary getFirstByDate(LocalDate date);
+
+    // 날씨일기 삭제
+    @Transactional
+    void deleteAllByDate(LocalDate date);
 
 }

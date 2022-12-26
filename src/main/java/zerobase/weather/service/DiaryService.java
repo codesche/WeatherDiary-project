@@ -31,7 +31,7 @@ public class DiaryService {
         this.diaryRepository = diaryRepository;
     }
 
-    // 일기 생성
+    // 날씨 일기 생성
     public void createDiary(LocalDate date, String text) {
         // open weather map에서 날씨 데이터 가져오기
         String weatherData = getWeatherString();
@@ -51,21 +51,26 @@ public class DiaryService {
         diaryRepository.save(nowDiary);
     }
 
-    // 날짜별 일기 조회
+    // 날짜별 날씨일기 조회
     public List<Diary> readDiary(LocalDate date) {
         return diaryRepository.findAllByDate(date);
     }
 
-    // 기간별 일기 조회
+    // 기간별 날씨일기 조회
     public List<Diary> readDiaries(LocalDate startDate, LocalDate endDate) {
         return diaryRepository.findAllByDateBetween(startDate, endDate);
     }
 
-    // 일기 수정
+    // 날씨일기 수정
     public void updateDiary(LocalDate date, String text) {
         Diary nowDiary = diaryRepository.getFirstByDate(date);
         nowDiary.setText(text);
         diaryRepository.save(nowDiary);
+    }
+
+    // 날씨일기 삭제
+    public void deleteDiary(LocalDate date) {
+        diaryRepository.deleteAllByDate(date);
     }
 
     // OpenWeatherMap에서 데이터 받아오기
