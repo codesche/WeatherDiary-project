@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
@@ -19,6 +20,14 @@ public class JpaMemoRepositoryTest {
 
     @Autowired
     JpaMemoRepository jpaMemoRepository;
+
+    // 테스트 코드 추가
+    @Test
+    void findAllMemoTest() {
+        List<Memo> memoList = jpaMemoRepository.findAll();
+        System.out.println(memoList);
+        assertNotNull(memoList);
+    }
 
     @Test
     void insertMemoTest() {
