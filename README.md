@@ -17,6 +17,7 @@
 - **DBMS : MySQL**
 - **Java Version : Java 8**
 - **IDE : Intellij IDEA 2022.2.3 (Ultimate Edition)**
+- **Test Program : Postman**
 - **etc : SpringBoot Logging, Swagger(API document)**
 
 ## API 정보(Swagger 활용)
