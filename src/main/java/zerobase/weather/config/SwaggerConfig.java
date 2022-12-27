@@ -18,16 +18,17 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
             .select()
-            .apis(RequestHandlerSelectors.any())
+            // error controller 삭제
+            .apis(RequestHandlerSelectors.basePackage("zerobase.weather"))
             .paths(PathSelectors.any())
             .build().apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("title")
-            .description("description")
-            .version("1.0")
+            .title("날씨 일기 프로젝트")
+            .description("날씨 일기를 CRUD 할 수 있는 벡엔드 API 입니다")
+            .version("2.0")
             .build();
     }
 
